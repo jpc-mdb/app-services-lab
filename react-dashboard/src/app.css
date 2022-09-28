@@ -1,0 +1,14 @@
+.mongodb-logo {
+    width: 160px;
+    height: 60px;
+    background-image: url("mongodb-logo.png");
+    background-size: 160px;
+    background-repeat: no-repeat;
+}
+
+.open-new-window {
+    background-image: url('open-new-window.png');
+    background-size: 20px;
+    width: 20px;
+    height: 20px;
+}

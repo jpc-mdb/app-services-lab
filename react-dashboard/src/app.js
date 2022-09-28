@@ -2,13 +2,17 @@ import React, { Component }  from 'react';
 import './app.css';
 import { Home } from './pages/Home/Home';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Settings } from './pages/Settings/Settings';
 
 export default function app() {
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<Home />} />
+                <Route exact path="/" element={<Home />} />
                 <Route path="/index.html" element={<Home />} />
+                <Route path="/index" element={<Home />} />
+                <Route path="/settings.html" element={<Settings />} />
+                <Route path="/settings" element={<Settings />} />
             </Routes>
         </Router>
     );

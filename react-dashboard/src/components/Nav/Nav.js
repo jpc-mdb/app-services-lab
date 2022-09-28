@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import { PageName } from "../Pages/PageName";
 
 export const Nav = () => {
     return (
         <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-            <button id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3">
+            {/* <button id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3">
                 <i className="fa fa-bars"></i>
-            </button>
+            </button> */}
 
-            <form
+            {/* <form
                 className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div className="input-group">
                     <input type="text" className="form-control bg-light border-0 small" placeholder="Search for..."
@@ -20,11 +20,11 @@ export const Nav = () => {
                         </button>
                     </div>
                 </div>
-            </form>
+            </form> */}
 
             <ul className="navbar-nav ml-auto">
 
-                <li className="nav-item dropdown no-arrow d-sm-none">
+                {/* <li className="nav-item dropdown no-arrow d-sm-none">
                     <Link className="nav-link dropdown-toggle" to="/" id="searchDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i className="fas fa-search fa-fw"></i>
@@ -44,9 +44,9 @@ export const Nav = () => {
                             </div>
                         </form>
                     </div>
-                </li>
+                </li> */}
 
-                <li className="nav-item dropdown no-arrow mx-1">
+                {/* <li className="nav-item dropdown no-arrow mx-1">
                     <Link className="nav-link dropdown-toggle" to="/" id="alertsDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i className="fas fa-bell fa-fw"></i>
@@ -92,9 +92,9 @@ export const Nav = () => {
                         </Link>
                         <Link className="dropdown-item text-center small text-gray-500" to="/">Show All Alerts</Link>
                     </div>
-                </li>
+                </li> */}
 
-                <li className="nav-item dropdown no-arrow mx-1">
+                {/* <li className="nav-item dropdown no-arrow mx-1">
                     <Link className="nav-link dropdown-toggle" to="/" id="messagesDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i className="fas fa-envelope fa-fw"></i>
@@ -155,7 +155,7 @@ export const Nav = () => {
                         </Link>
                         <Link className="dropdown-item text-center small text-gray-500" to="/">Read More Messages</Link>
                     </div>
-                </li>
+                </li> */}
 
                 <div className="topbar-divider d-none d-sm-block"></div>
 
