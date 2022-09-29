@@ -2,7 +2,7 @@ import React from "react";
 import { useState,useEffect } from "react";
 import axios from 'axios';
 
-export const ProjectCard = () => {
+export const ProjectCard = ({ project_id }) => {
     const [project, setProject] = useState('');
     const [href, setLink] = useState('');
 
@@ -53,11 +53,18 @@ export const ProjectCard = () => {
                                 # of clusters: { JSON.stringify(project.clusterCount) }
                             </div>
                             <hr />
-                            <div className="h6 mb-0 text-gray-800">
-                                <a href={ href } target="_bank">
-                                    <div className="open-new-window"></div>
-                                </a>
-                            </div>
+                            <a href={ href } target="_bank" className="btn btn-primary btn-icon-split btn-lg mt-1">
+                                <span className="icon text-white-50">
+                                    <i className="fas fa-share"></i>
+                                </span>
+                                <span className="text">View in Atlas</span>
+                            </a>
+                            <a href="#" className="btn btn-primary btn-icon-split btn-lg mt-2" onClick={e => project_id(project.id)}>
+                                <span className="icon text-white-50">
+                                    <i className="fas fa-database"></i>
+                                </span>
+                                <span className="text">View Clusters</span>
+                            </a>
                         </div>
                     </div>
                 </div>

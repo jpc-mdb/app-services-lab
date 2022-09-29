@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export const ClustersCard = ({project_id}) => {
     const [clusters, setClusters] = useState([]);
-    // const [href, setLink] = useState('');
+    const [expandIcon, setExpandIcon] = useState('fas fa-fw fa-arrow-down');
 
     useEffect(() => {
         async function getClusters(){
@@ -17,7 +17,6 @@ export const ClustersCard = ({project_id}) => {
                 console.log(error)
             })
             .then(response => {
-                // setLink(response.data.results[0].links[0].href);
                 setClusters(response.data.results);
             })
         }
@@ -26,6 +25,15 @@ export const ClustersCard = ({project_id}) => {
             getClusters();
         }
     })
+
+    function toggleExpandIcon(){
+        if(expandIcon == 'fas fa-fw fa-arrow-down') {
+            setExpandIcon('fas fa-fw fa-arrow-up');
+        }
+        else {
+            setExpandIcon('fas fa-fw fa-arrow-down');
+        }
+    }
 
     return (
         <div className="col-xl-3 col-md-6 mb-4">
@@ -40,14 +48,41 @@ export const ClustersCard = ({project_id}) => {
                             {
                                 clusters.map(cluster =>
                                     <>
-                                    <div key={cluster.id} className="h6 mb-0 text-gray-800">
-                                        Name: { cluster.name }
-                                        <br />
-                                        Status: { cluster.stateName }
-                                        <br />
-                                        Cluster Type: { cluster.clusterType }
-                                    </div>
-                                    <hr />
+                                    <ul className="navbar-nav accordion" id="accordionSidebar">
+                                    <li className="nav-item">
+                                            <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                                                aria-expanded="true" aria-controls="collapsePages" onClick={toggleExpandIcon}>
+                                                <i className="fas fa-fw fa-database"></i>
+                                                <span> { cluster.name }</span>
+                                                <i className={expandIcon}></i>
+                                            </a>
+                                            <div id="collapsePages" className="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                                                <div className="bg-white py-2 collapse-inner rounded">
+                                                    <div className="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                        Details
+                                                    </div>
+                                                    <span className="collapse-item">Cluster State: { cluster.stateName }</span>
+                                                    <br />
+                                                    <span className="collapse-item">Paused? { cluster.paused ? 'true' : 'false' }</span>
+                                                    <br />
+                                                    <span className="collapse-item">Cluster Type: { cluster.clusterType }</span>
+                                                    <br />
+                                                    <span className="collapse-item"># Replicas: { cluster.replicationFactor }</span>
+                                                    <br />
+                                                    <span className="collapse-item"># Shards: { cluster.numShards }</span>
+                                                    <div className="collapse-divider"></div>
+                                                    <div className="text-xs font-weight-bold text-info text-uppercase mb-1 mt-2">
+                                                        Features
+                                                    </div>
+                                                    <span className="collapse-item">Backup: { cluster.backupEnabled ? 'true' : 'false' }</span>
+                                                    <br />
+                                                    <span className="collapse-item">Auto Scaling: { cluster.autoScaling.compute.enabled ? 'true' : 'false' }</span>
+                                                    <br />
+                                                    <span className="collapse-item">BI Connector: { cluster.biConnector.enabled ? 'true' : 'false' }</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
                                     </>
                                 )
                             }
