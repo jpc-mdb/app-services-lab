@@ -2,14 +2,18 @@ import React from "react";
 import { useState,useEffect } from "react";
 import axios from 'axios';
 
-export const ProjectCard = ({ project_id }) => {
+export const ProjectCard = ({ project_id, public_key, private_key }) => {
     const [project, setProject] = useState('');
     const [href, setLink] = useState('');
 
     useEffect(() => {
         async function getProject(){
             const instance = axios.create({
-                baseURL: 'https://data.mongodb-api.com/app/appserviceslab-ysgfj/endpoint'
+                baseURL: 'https://data.mongodb-api.com/app/appserviceslab-ysgfj/endpoint',
+                params: {
+                    'public_key': public_key,
+                    'private_key': private_key
+                }
             });
 
             await instance.get('/projects')
@@ -22,7 +26,7 @@ export const ProjectCard = ({ project_id }) => {
             })
         }
 
-        if(project == ''){
+        if(project == '' && public_key != ''){
             getProject();
         }
     })

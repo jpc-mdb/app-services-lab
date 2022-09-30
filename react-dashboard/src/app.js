@@ -11,8 +11,6 @@ export default function app() {
                 <Route exact path="/" element={<Home />} />
                 <Route path="/index.html" element={<Home />} />
                 <Route path="/index" element={<Home />} />
-                <Route path="/settings.html" element={<Settings />} />
-                <Route path="/settings" element={<Settings />} />
             </Routes>
         </Router>
     );

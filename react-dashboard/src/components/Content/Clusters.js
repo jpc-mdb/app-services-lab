@@ -63,7 +63,7 @@ export const ClustersCard = ({project_id}) => {
                                                     </div>
                                                     <span className="collapse-item">Cluster State: { cluster.stateName }</span>
                                                     <br />
-                                                    <span className="collapse-item">Paused? { cluster.paused ? 'true' : 'false' }</span>
+                                                    <span className="collapse-item">Paused: { cluster.paused ? 'true' : 'false' }</span>
                                                     <br />
                                                     <span className="collapse-item">Cluster Type: { cluster.clusterType }</span>
                                                     <br />
