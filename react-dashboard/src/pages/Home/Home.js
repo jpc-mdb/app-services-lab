@@ -16,45 +16,45 @@ export const Home = () => {
 
     return (
         <>
-        <div id="wrapper">
-            <LeftNav />
+            <div id="wrapper">
+                <LeftNav />
 
-            <div id="content-wrapper" className="d-flex flex-column">
+                <div id="content-wrapper" className="d-flex flex-column">
 
-                <div id="content">
-                    <Nav 
-                        public_key={ public_key }
-                        private_key={ private_key } />
+                    <div id="content">
+                        <Nav
+                            public_key={public_key}
+                            private_key={private_key} />
 
-                    <div className="container-fluid">
-                        <PageName pageName="Dashboard" />
+                        <div className="container-fluid">
+                            <PageName pageName="Dashboard" />
 
-                        <div className="row">
-                            { public_key != null && private_key != null ?
-                                <ProjectCard 
-                                    project_id={ val => setProjectId(val) }
-                                    public_key={ public_key }
-                                    private_key={ private_key } />
-                                : 
-                                <div>                                    
-                                    <h2 className="ml-3">
-                                        <i className="fas fa-fw fa-arrow-up"></i>
-                                        Please enter your credentials in the header above
-                                        <i className="fas fa-fw fa-arrow-up"></i>
-                                    </h2>
-                                </div>
-                            }
+                            <div className="row">
+                                {public_key != null && private_key != null ?
+                                    <ProjectCard
+                                        project_id={val => setProjectId(val)}
+                                        public_key={public_key}
+                                        private_key={private_key} />
+                                    :
+                                    <div>
+                                        <h2 className="ml-3">
+                                            <i className="fas fa-fw fa-arrow-up"></i>
+                                            Please enter your credentials in the header above
+                                            <i className="fas fa-fw fa-arrow-up"></i>
+                                        </h2>
+                                    </div>
+                                }
 
-                            { project_id != '' ? <ClustersCard project_id={ project_id } /> : <div></div> }
+                                {project_id != '' && public_key != null ? <ClustersCard project_id={project_id} /> : <div></div>}
+                            </div>
                         </div>
                     </div>
+
+                    <Footer />
                 </div>
-
-                <Footer />
             </div>
-        </div>
 
-        <BackToTop />
+            <BackToTop />
         </>
     )
 }

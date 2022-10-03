@@ -5,12 +5,3 @@
     background-size: 160px;
     background-repeat: no-repeat;
 }
-
-.open-new-window {
-    background-image: url('open-new-window.png');
-    background-size: 20px;
-    background-repeat: no-repeat;
-    background-position: 180px;
-    width: 200px;
-    height: 20px;
-}

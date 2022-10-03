@@ -1,7 +1,7 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import { UserContext } from "../../pages/Auth/context/User.context";
 
 export const Nav = ({public_key, private_key}) => {
     const [project, setProject] = useState('');
@@ -47,6 +47,23 @@ export const Nav = ({public_key, private_key}) => {
         }
     })
 
+    const { logOutUser } = useContext(UserContext);
+
+    // This function is called when the user clicks the "Logout" button.
+    const logOut = async () => {
+        try {
+            // Calling the logOutUser function from the user context.
+            const loggedOut = await logOutUser();
+            // Now we will refresh the page, and the user will be logged out and
+            // redirected to the login page because of the <PrivateRoute /> component.
+            if (loggedOut) {
+                window.location.reload(true);
+            }
+        } catch (error) {
+            alert(error)
+        }
+    }
+
     return (
         <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
             <form className="d-none d-sm-inline-block form-inline navbar-search">
@@ -67,7 +84,7 @@ export const Nav = ({public_key, private_key}) => {
                         onChange={handlePrivKeyChange} />
                     <div className="input-group-append">
                         <a 
-                            href={"/index?public_key=" + pub_key + "&private_key=" + priv_key}
+                            href={"/index.html?public_key=" + pub_key + "&private_key=" + priv_key}
                             className="btn btn-primary btn-user btn-block">
                             Submit
                         </a>
@@ -76,17 +93,16 @@ export const Nav = ({public_key, private_key}) => {
             </form>
 
             <ul className="navbar-nav ml-auto">
-                <div className="topbar-divider d-none d-sm-block"></div>
+            <div className="topbar-divider d-none d-sm-block"></div>
 
-                <li className="nav-item dropdown no-arrow">
-                    <Link className="nav-link nav-item" to="/" id="userDropdown" role="button"
-                        data-toggle="modal" data-target="#loginModal">
-                        <span className="mr-2 d-none d-lg-inline text-gray-600 small">{ project.name }</span>
-                        <img className="img-profile rounded-circle"
-                            src="img/undraw_rocket.svg" />
-                    </Link>
+                <li className="nav-item dropdown no-arrow mt-1">
+                    <a 
+                        href="#"
+                        className="btn btn-primary btn-user btn-block"
+                        onClick={logOut}>
+                        Logout
+                    </a>
                 </li>
-
             </ul>
 
         </nav>
