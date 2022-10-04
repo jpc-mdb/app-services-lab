@@ -26,5 +26,14 @@ export default function app() {
                 </Routes>
             </UserProvider>
         </BrowserRouter>
+
+        // Switch to the below to run the website without login
+        // <Router>
+        //     <Routes>
+        //         <Route exact path="/" element={<Home />} />
+        //         <Route path="/index.html" element={<Home />} />
+        //         <Route path="/index" element={<Home />} />
+        //     </Routes>
+        // </Router>
     );
 }
