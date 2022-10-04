@@ -22,9 +22,7 @@ export const Home = () => {
                 <div id="content-wrapper" className="d-flex flex-column">
 
                     <div id="content">
-                        <Nav
-                            public_key={public_key}
-                            private_key={private_key} />
+                        <Nav />
 
                         <div className="container-fluid">
                             <PageName pageName="Dashboard" />

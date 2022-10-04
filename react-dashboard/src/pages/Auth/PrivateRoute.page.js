@@ -7,7 +7,7 @@ const PrivateRoute = () => {
     // Fetching the user from the user context.
     const { user } = useContext(UserContext);
     const location = useLocation();
-    const redirectLoginUrl = `/login?redirectTo=${encodeURI(location.pathname)}`;
+    const redirectLoginUrl = `/login?redirectTo=${encodeURI(location.pathname + location.search)}`;
 
     // If the user is not logged in we are redirecting them
     // to the login page. Otherwise we are letting them to
