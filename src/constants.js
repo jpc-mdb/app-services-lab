@@ -1,1 +1,1 @@
-export const APP_ID = 'appserviceslab-ysgfj';
+export const APP_ID = '[YOUR APP ID]';
