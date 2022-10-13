@@ -7,18 +7,11 @@ export const ClustersCard = ({project_id, public_key, private_key}) => {
     const [clusters, setClusters] = useState([]);
     const [expandIcon, setExpandIcon] = useState('fas fa-fw fa-arrow-down');
 
-    console.log(clusters);
-    console.log(project_id);
-    console.log(public_key);
-    console.log(private_key);
-
     useEffect(() => {
         async function getClusters(){
             const instance = axios.create({
                 baseURL: 'https://data.mongodb-api.com/app/' + APP_ID + '/endpoint'
             });
-
-            console.log(instance.baseURL);
 
             await instance.get('/clusters?project_id=' + project_id + '&public_key=' + public_key + '&private_key=' + private_key)
             .catch(function(error) {
