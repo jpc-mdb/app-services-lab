@@ -16,11 +16,6 @@ export const Nav = ({public_key, private_key}) => {
         setPrivKey(event.target.value);
     }
 
-    const handleClick = event => {
-        public_key = pub_key;
-        private_key = priv_key;
-    }
-
     useEffect(() => {
         async function getProject(){
             const instance = axios.create({
@@ -40,7 +35,7 @@ export const Nav = ({public_key, private_key}) => {
             })
         }
 
-        if(project == '' && public_key != null && private_key != null){
+        if(project === '' && public_key !== null && private_key != null){
             console.log('public key: ' + public_key);
             console.log('private key: ' + private_key);
             getProject();

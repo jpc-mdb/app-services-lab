@@ -28,7 +28,7 @@ export const Home = () => {
                             <PageName pageName="Dashboard" />
 
                             <div className="row">
-                                {public_key != null && private_key != null ?
+                                {public_key !== null && private_key !== null ?
                                     <ProjectCard
                                         project_id={val => setProjectId(val)}
                                         public_key={public_key}
@@ -43,7 +43,7 @@ export const Home = () => {
                                     </div>
                                 }
 
-                                {project_id != '' && public_key != null ? <ClustersCard project_id={project_id} /> : <div></div>}
+                                {project_id !== '' && public_key !== null ? <ClustersCard project_id={project_id} public_key={public_key} private_key={private_key} /> : <div></div>}
                             </div>
                         </div>
                     </div>

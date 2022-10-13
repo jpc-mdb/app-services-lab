@@ -1,18 +1,26 @@
 import React from "react";
 import { useState,useEffect } from "react";
 import axios from 'axios';
+import { APP_ID } from '../../constants';
 
-export const ClustersCard = ({project_id}) => {
+export const ClustersCard = ({project_id, public_key, private_key}) => {
     const [clusters, setClusters] = useState([]);
     const [expandIcon, setExpandIcon] = useState('fas fa-fw fa-arrow-down');
+
+    console.log(clusters);
+    console.log(project_id);
+    console.log(public_key);
+    console.log(private_key);
 
     useEffect(() => {
         async function getClusters(){
             const instance = axios.create({
-                baseURL: 'https://data.mongodb-api.com/app/appserviceslab-ysgfj/endpoint'
+                baseURL: 'https://data.mongodb-api.com/app/' + APP_ID + '/endpoint'
             });
 
-            await instance.get('/clusters?project_id=' + project_id)
+            console.log(instance.baseURL);
+
+            await instance.get('/clusters?project_id=' + project_id + '&public_key=' + public_key + '&private_key=' + private_key)
             .catch(function(error) {
                 console.log(error)
             })
@@ -27,7 +35,7 @@ export const ClustersCard = ({project_id}) => {
     })
 
     function toggleExpandIcon(){
-        if(expandIcon == 'fas fa-fw fa-arrow-down') {
+        if(expandIcon === 'fas fa-fw fa-arrow-down') {
             setExpandIcon('fas fa-fw fa-arrow-up');
         }
         else {
@@ -48,8 +56,9 @@ export const ClustersCard = ({project_id}) => {
                             {
                                 clusters.map(cluster =>
                                     <>
+                                    {console.log(cluster)}
                                     <ul className="navbar-nav accordion" id="accordionSidebar">
-                                    <li className="nav-item">
+                                    <li className="nav-item" key={cluster.id}>
                                             <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                                                 aria-expanded="true" aria-controls="collapsePages" onClick={toggleExpandIcon}>
                                                 <i className="fas fa-fw fa-database"></i>
