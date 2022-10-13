@@ -36,11 +36,14 @@ export const Nav = ({public_key, private_key}) => {
         }
 
         if(project === '' && public_key !== null && private_key != null){
-            console.log('public key: ' + public_key);
-            console.log('private key: ' + private_key);
             getProject();
         }
     })
+
+    const handleSubmitClick = event => {
+        event.preventDefault();
+        window.location.assign('/index?public_key=' + pub_key + '&private_key=' + priv_key);
+    }
 
     const { logOutUser } = useContext(UserContext);
 
@@ -52,7 +55,7 @@ export const Nav = ({public_key, private_key}) => {
             // Now we will refresh the page, and the user will be logged out and
             // redirected to the login page because of the <PrivateRoute /> component.
             if (loggedOut) {
-                window.location.reload(true);
+                window.location.assign('/');
             }
         } catch (error) {
             alert(error)
@@ -79,8 +82,9 @@ export const Nav = ({public_key, private_key}) => {
                         onChange={handlePrivKeyChange} />
                     <div className="input-group-append">
                         <a 
-                            href={"/index.html?public_key=" + pub_key + "&private_key=" + priv_key}
-                            className="btn btn-primary btn-user btn-block">
+                            href="#"
+                            className="btn btn-primary btn-user btn-block"
+                            onClick={handleSubmitClick}>
                             Submit
                         </a>
                     </div>
